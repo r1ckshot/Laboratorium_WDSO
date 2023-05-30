@@ -1,0 +1,7 @@
+Sprawdzenie czy utworzono obszar pamieci wspoldzielonej:
+ipcs -m
+
+Aby usunac:
+ipcrm -m <ID>
+
+<ID> - identyfikator segmentu (wydrukowany przez program) 

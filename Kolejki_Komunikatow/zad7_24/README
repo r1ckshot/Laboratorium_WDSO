@@ -1,0 +1,12 @@
+./msg_writer & sleep 1; ipcs -q; ./msg_reader 
+
+
+Check whether the message queue was created:
+ipcs -q
+
+Remove message queue - use:
+$ ipcrm -Q 0x000004d2
+or:
+$ ipcrm -q 524288
+
+

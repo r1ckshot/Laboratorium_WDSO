@@ -1,0 +1,10 @@
+Klient
+
+1) Program rozpoczyna od sprawdzenia, czy użytkownik podał prawidłową liczbę argumentów - adres IP serwera i port. Jeżeli nie, program kończy działanie.
+2) Następnie inicjalizowane jest gniazdo klienta, podobnie jak w serwerze, przy użyciu funkcji socket().
+3) Obiekt serv_adr zawierający informacje o adresie serwera jest zerowany.
+4) W strukturze serv_adr, ustawiana jest rodzina adresów na AF_INET, adres IP serwera ustawiany jest na podany przez użytkownika, a port serwera ustawiany jest na podany przez użytkownika.
+5) Klient następnie próbuje nawiązać połączenie z serwerem, przy użyciu funkcji connect(). Jeżeli połączenie nie zostanie nawiązane, program kończy działanie.
+6) Po nawiązaniu połączenia, program generuje losowy ciąg znaków, a następnie wysyła go do serwera, przy użyciu funkcji write().
+7) Program następnie oczekuje na odpowiedź od serwera, przy użyciu funkcji read(). Odpowiedź od serwera jest wyświetlana na konsoli.
+8) Na koniec, program zamyka gniazdo klienta i kończy działanie.

@@ -1,0 +1,5 @@
+Funkcja 'shmat' łączy segment pamięci współdzielonej identyfikowany przez shmid z przestrzenią adresową procesu wywołującego. 
+Argumenty to: identyfikator segmentu, adres, na którym chcemy go umieścić (NULL oznacza, że system może wybrać dowolny adres), 
+i flagi, które w tym przypadku są ustawione na 0, co oznacza, że segment jest otwarty do odczytu i zapisu.
+
+./serwer & sleep 3; ipcs -m; ./klient 

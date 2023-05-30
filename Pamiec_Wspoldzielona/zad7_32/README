@@ -1,0 +1,3 @@
+Program tworzy segment pamięci współdzielonej za pomocą funkcji mmap() i dzieli go między procesem rodzica i potomka. 
+Proces rodzic zapisuje wiadomość do pamięci współdzielonej, a proces potomny odczytuje tę wiadomość i ją wyświetla. 
+Następnie proces rodzic usuwa segment pamięci współdzielonej za pomocą funkcji munmap().

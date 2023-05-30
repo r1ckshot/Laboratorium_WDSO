@@ -1,0 +1,44 @@
+Funkcje pthread_create() i pthread_join() są częścią biblioteki Pthreads (POSIX Threads), 
+która jest standardową biblioteką w systemach UNIX do tworzenia i zarządzania wątkami.
+
+pthread_create() służy do tworzenia nowego wątku. 
+Ta funkcja przyjmuje cztery argumenty:
+Wskaźnik na zmienną typu pthread_t, której przypisany zostanie identyfikator nowo utworzonego wątku; 
+Atrybuty wątku (zwykle ustawiane na NULL, co oznacza, że wątek ma atrybuty domyślne); 
+Wskaźnik na funkcję, która zostanie uruchomiona w nowym wątku; 
+Wskaźnik na argumenty przekazywane do tej funkcji.
+
+pthread_join() służy do oczekiwania na zakończenie wątku. 
+Ta funkcja blokuje wątek wywołujący (zazwyczaj wątek główny), 
+aż wątek określony przez argument pthread_t zakończy swoje działanie. 
+Dzięki temu wątek główny może oczekiwać na zakończenie wszystkich innych wątków przed zakończeniem programu.
+
+Używamy pthread_create() do utworzenia dwóch wątków: jednego do odbierania wiadomości, drugiego do wysyłania. 
+A pthread_join() służy do oczekiwania na zakończenie tych wątków.
+
+
+
+Program program2.c jest prawie identyczny jak program1.c, tylko zamieniamy msgid1 na msgid2 i odwrotnie.
+
+
+Kompilacja:
+gcc -o program1 program1.c -lpthread
+gcc -o program2 program2.c -lpthread
+
+
+Jezeli potrzebujemy wyjscia z obu programow:
+void *receiver(void *arg) {
+    while(1) {
+        if(msgrcv(msgid2, &message, sizeof(message), 0, IPC_NOWAIT) != -1) {
+            printf("Otrzymano: %s\n", message.msg_text);
+            if(strcmp(message.msg_text, "exit") == 0) {
+                strcpy(message.msg_text, "exit");
+                if(msgsnd(msgid1, &message, sizeof(message), 0) == -1) {
+                    perror("msgsnd");
+                    exit(1);
+                }
+                exit(0);
+            }
+        }
+    }
+}

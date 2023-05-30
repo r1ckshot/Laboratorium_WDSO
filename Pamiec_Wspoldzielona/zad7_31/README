@@ -1,0 +1,13 @@
+Różne wyniki wynikają z tego, że procesy rodzica i potomka mają swoje własne przestrzenie adresowe. 
+Segment pamięci współdzielonej jest współdzielony między tymi procesami, 
+ale niekoniecznie ma tę samą adresację w przestrzeni adresowej każdego procesu.
+
+W przypadku pierwszego wyniku, proces potomny nie odczytuje żadnych danych z pamięci współdzielonej, 
+ponieważ segment jest pusty. Dopiero po tym, jak proces rodzica zapisze dane do segmentu, 
+potomek zostanie uruchomiony i będzie miał dostęp do tych danych.
+
+W przypadku drugiego wyniku, proces rodzica zapisuje dane do pamięci współdzielonej, 
+a potem potomek odczytuje te dane i wyświetla komunikat "Czy potrafisz tak współdzielić pamięć z przyjacielem jak ja?". 
+To właśnie ten komunikat jest wyświetlany jako wynik odczytu z pamięci współdzielonej.
+
+*Różnica polega na tym, czy proces potomny odczytuje jakieś dane z pamięci współdzielonej przed jej usunięciem.*

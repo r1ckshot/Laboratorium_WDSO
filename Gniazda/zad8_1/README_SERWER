@@ -1,0 +1,11 @@
+Serwer
+
+1) Program rozpoczyna od inicjalizacji gniazda serwera, przy użyciu funkcji socket(). Ta funkcja tworzy nowe gniazdo komunikacyjne i zwraca deskryptor gniazda. Jeżeli gniazdo nie zostało utworzone poprawnie, program zakończy działanie.
+2) Następnie jest zerowany obiekt serv_adr zawierający informacje o adresie serwera.
+3) W strukturze serv_adr, ustawiana jest rodzina adresów na AF_INET, co oznacza, że używamy adresów IPv4. Adres IP serwera ustawiany jest na INADDR_ANY, co oznacza, że serwer akceptuje połączenia na dowolny adres IP tej maszyny. Port serwera ustawiany jest na 9734.
+4) Gniazdo serwera jest następnie wiązane z adresem serwera, przy użyciu funkcji bind(). Jeżeli bindowanie zakończy się niepowodzeniem, program zakończy działanie.
+5) Gniazdo serwera jest następnie ustawiane do słuchania połączeń przychodzących, przy użyciu funkcji listen(). Ta funkcja pozwala gniazdu na przyjmowanie połączeń przychodzących od klientów. Jeżeli nie można ustawić gniazda do słuchania, program zakończy działanie.
+6) Następnie program przechodzi do pętli, gdzie akceptuje połączenia przychodzące od klientów, przy użyciu funkcji accept(). Ta funkcja blokuje wykonanie programu, aż połączenie klienta zostanie zaakceptowane. Po zaakceptowaniu połączenia, funkcja accept() zwraca deskryptor gniazda dla tego konkretnego połączenia klienta.
+7) Po zaakceptowaniu połączenia, program przechodzi do pętli, gdzie czyta wiadomości od klienta, przy użyciu funkcji read(). Wiadomość jest konwertowana na wielkie litery, a następnie zwracana do klienta, przy użyciu funkcji write().
+8) Po obsłużeniu klienta, gniazdo klienta jest zamykane, przy użyciu funkcji close().
+9) Po obsłużeniu 5 klientów, program zamyka gniazdo serwera i kończy działanie.
