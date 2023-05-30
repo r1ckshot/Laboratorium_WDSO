@@ -23,7 +23,7 @@ int main() {
 
     // Odbieranie danych od klienta.
     while (1) {
-        msgrcv(msgid, &message, sizeof(message), 0, 0); // Dowolny typ wiadomosci.
+        msgrcv(msgid, &message, sizeof(message), 0, 0); //Dowolny typ wiadomosci.
         if (message.msg_type == M_END)
             break;
         sum += message.msg_data;
